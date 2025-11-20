@@ -1,8 +1,9 @@
 import { useState}  from "react"
 import { genres } from "../data.js";
+import { usePodcast } from "../context/PodcastContext.jsx";
 
-export default function Filter({selectedGenre, setSelectedGenre, sort, setSort}) {
-
+export default function Filter() {
+     const { selectedGenre, setSelectedGenre, sort, setSort } = usePodcast();
     return(
         <div className="filter">
             <h2>Filter by:</h2>
@@ -26,7 +27,7 @@ export default function Filter({selectedGenre, setSelectedGenre, sort, setSort})
                 value={sort}
                 onChange={(pod) => setSort(pod.target.value)}    
             >
-                <option value="">Recently Updated</option>
+                <option value="">Default</option>
                 <option value="newest">Newest</option>
                 <option value="upDown">A - Z</option>
                 <option value="downUp">Z - A</option>

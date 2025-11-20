@@ -3,8 +3,11 @@ import searchIcon from "../assets/search.png"
 import appIcon from "../assets/app-icon.png"
 import "../styles/styles.css"
 import man from "../assets/man.png"
+import { usePodcast } from "../context/PodcastContext.jsx"
 
-export default function Header({searchInput, setSearchInput, setCurrentPage}) {
+export default function Header() {
+    const {searchInput, setSearchInput, setCurrentPage} = usePodcast()
+    
     return (
         <header className="app-header">
             <div className="icon-name-wrapper">

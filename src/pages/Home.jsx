@@ -18,7 +18,7 @@ import Filter from "../components/Filter";
 import PodcastCard from "../components/PodcastCard";
 import PodcastModal from "../components/PodcastModal";
 import Pagination from "../components/Pagination";
-import LoadingState from "../components/LoadingState.jsx";
+import LoadingState from "../components/LoadingState";
 
 // Styles
 import "../styles/Home.css";
@@ -94,7 +94,7 @@ const fetchPodcasts = useCallback(async (signal) => {
                     setSearchInput={setSearchInput}
                     setCurrentPage={setCurrentPage}
                 />
-                
+
                 <Filter/>
 
                 <section className="podcast-grid">

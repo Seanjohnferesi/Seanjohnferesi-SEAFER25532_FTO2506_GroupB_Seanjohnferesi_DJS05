@@ -1,8 +1,10 @@
 import { useState } from "react";
 import React from "react";
 import "../styles/Pagination.css"
+import { usePodcast } from "../context/PodcastContext.jsx";
 
-export default function Pagination({ totalItems, itemsPerpage, currentPage, setCurrentPage }) {
+export default function Pagination() {
+    const { totalItems, itemsPerpage, currentPage, setCurrentPage } = usePodcast()
     const totalPages = Math.ceil(totalItems / itemsPerpage);
 
     const handleClick = (page) => {
