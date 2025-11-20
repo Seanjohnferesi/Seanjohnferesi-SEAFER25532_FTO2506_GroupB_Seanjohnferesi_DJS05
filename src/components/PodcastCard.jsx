@@ -4,13 +4,18 @@ import  seasonIcon from "../assets/season.png"
 import { genres } from "../data.js";
 import { formatDate } from "../utils/formatDate.js";
 import { getGenreTitle } from "../utils/getGenreTitle.js";
+import { useNavigate } from "react-router-dom";
 
-export default function PodcastCard({podcast, openModal}) {
+export default function PodcastCard({podcast}) {
+    const navigate = useNavigate();
+    const gotToDetails = () => {
+        navigate(`/show/${podcast.id}`);
+    }
     
     const showGenres = getGenreTitle(podcast.id, genres)
 
     return (    
-        <div className="card" onClick={() => openModal(podcast)}>
+        <div className="card" onClick={gotToDetails}>
             <div className="podcast-img-div">
                 <img src={podcast.image} alt={podcast.title} className="podcast-img"/>
             </div>
