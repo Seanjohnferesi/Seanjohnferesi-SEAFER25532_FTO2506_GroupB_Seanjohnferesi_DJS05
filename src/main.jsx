@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom/client"
-import App from "./App";
-import { Podcast } from "./context/PodcastContext";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from "react-router-dom";
+import App from './App'
+import { Podcast } from "./context/PodcastContext.jsx";
 
-const rootDom = document.getElementById("root")
-const root = ReactDOM.createRoot(rootDom);
-
-root.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
     <Podcast>
-        <App />
+      <App />
     </Podcast>
+  </BrowserRouter>
 );
