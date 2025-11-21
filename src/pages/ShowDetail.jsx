@@ -6,6 +6,7 @@ import LoadingState from "../components/LoadingState";
 import { getGenreTitle } from "../utils/getGenreTitle.js";
 import { genres } from "../data.js";
 import { formatDate } from "../utils/formatDate.js";
+import calendar from "../assets/calendar.png"
 
 
 export default function ShowDetail() {
@@ -37,7 +38,8 @@ export default function ShowDetail() {
     if (error) return <p>{error}</p>
     if (!podcasts || podcasts.length === 0) return <LoadingState />;
 
-    const show = podcasts[0]
+    const show = podcasts.find(p => p.id === id)
+    console.log(show)
    
     if(!show) return <p>Show not found</p>;
    
@@ -47,7 +49,6 @@ export default function ShowDetail() {
                     <div className="modal-content">
         
                         <div className="title-btn-wrapper">
-                            <h1 className="modal-title">{show.title}</h1>
                             <div className="close-btn" >
                             </div>
                         </div>
@@ -60,20 +61,42 @@ export default function ShowDetail() {
         
                             <div className="pod-info-container">
                                 <div className="pod-description">
-                                    <p>Description</p>
+                                    <h1 className="modal-title">{show.title}</h1>
                                     <p className="pod-info">{show.description}</p>
-        
-                                    <p>Genres</p>
-                                    <div className="genre-flex">
-                                        {showGenres.map((genre, index) => (
-                                            <div key={index} className="genre-item">{genre}</div>
-                                        )) }
+
+                                    <div className="genre-date">
+                                        <div className="genre-container">
+                                            <div className="rt">
+                                                <p className="gen-header">GENRES</p>
+                                                <div className="genre-flex">
+                                                    {showGenres.map((genre, index) => (
+                                                        <div key={index} className="genre-item">{genre}</div>
+                                                    )) }
+                                                </div>
+                                            </div>
+
+                                            <div className="totals-seasons">
+                                                <p>TOTAL SEASONS</p>
+                                                <p>4 Seasons</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="date">
+                                            <div className="date-details">
+                                                <p>LAST UPDATED</p>
+                                                <p className="date-formatted">{formatDate(show.updated )} </p>
+                                            </div>
+
+                                            <div className="total-episodes">
+                                                <p>TOTAL EPISODES</p>
+                                                <p>48 Episodes</p>
+                                            </div>
+                                        </div>
                                     </div>
-        
-                                    <div className="date">
-                                        {/* <img src={calendar} alt="a calender icon" /> */}
-                                        <p className="date-formatted">Last Updated: {formatDate(show.updated )} </p>
+
+                                    <div className="stats-flex">
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -91,8 +114,9 @@ export default function ShowDetail() {
                                         ))}
                                 </div>
                             </div>
-        
                         </div>
+
+                        
             
                     </div>
                 </section>

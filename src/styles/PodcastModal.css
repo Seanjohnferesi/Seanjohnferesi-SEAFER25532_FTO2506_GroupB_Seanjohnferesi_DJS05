@@ -1,12 +1,17 @@
+@layer Base {
+    .modal {
+        display: flex;
+        justify-content: center;
+    }
 
-    .modal-content{
-        width: 900px;
+    .modal-content {
+        width: 1000px;
         height: 800px;
         padding: 15px 25px;
         background-color: var(--color-bg);
         border-radius: 8px;
         overflow-y: auto;
-        scrollbar-width: none;      
+        scrollbar-width: none;
         -ms-overflow-style: none;
     }
 
@@ -14,81 +19,74 @@
         display: none;
     }
 
-
-    .title-btn-wrapper{
+    .title-btn-wrapper {
         display: flex;
-        justify-content:space-between;
+        justify-content: space-between;
         align-items: center;
-        margin-bottom: 25px;;
+        margin-bottom: 25px;
     }
 
-    .modal-title{
+    .modal-title {
         margin: 0;
         color: black;
         font-weight: 500;
     }
+}
 
-    .close-btn > img{
-        width: 15px;
-        height: 15px;
-    }
-
-    .close-btn{
-        cursor: pointer;
-        width: 25px;
-        height: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .pod-img{
-        width: 300px;
-        height: 300px;
-    }
-
-    .pod-img > img{
-        width: 100%;
-        border-radius: 8px;
-    }
-
-    .flex-wrapper{
+@layer podlayout {
+    .flex-wrapper {
         display: flex;
         gap: 30px;
         align-items: flex-start;
         justify-content: center;
     }
 
-    .pod-info-container{
+    .pod-img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .pod-img > img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .pod-info-container {
         flex: 1;
     }
 
-    .pod-description > p:nth-of-type(1){
-        margin: 0;
-        font-weight: 500;
-        font-size: 17px;
-    }
-
-    .pod-description > p:nth-of-type(2){
-        margin: 0;
-        margin-top: 10px;
+    .pod-description > p:nth-of-type(1) {
+        margin: 10px 0 0 0;
         color: var(--color-content-text);
     }
+}
 
-    .pod-description > p:nth-of-type(3){
+@layer MetaData {
+    .gen-header {
+        margin: 20px 0 0 0;
         font-weight: 500;
-        margin: 0;
         font-size: 17px;
-        margin: 20px 0 10px 0;
+        color: rgba(0, 0, 0, 0.4);
     }
 
-    .genre-flex{
+    .genre-date {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+    }
+
+    .genre-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .genre-flex {
         display: flex;
         gap: 8px;
-        margin: 5px 0 10px 0;
+        margin: 5px 0 10px;
     }
 
-    .genre-flex > div{
+    .genre-flex > div {
         background-color: var(--color-btn);
         padding: 7px 12px;
         border-radius: 25px;
@@ -96,85 +94,84 @@
         color: var(--color-text);
     }
 
-    .date{
-        display: flex;
-        align-items: center;
-        gap: 5px
-    }
-
-    .date > img{
-        width: 24px;
-        height: 24px;
-    }
-
-    .date > p{
-        font-weight: 500;
-        color: var(--color-content-text);
-    }
-
-    /* SEASONS SECTION */
-    .season-list-container{
-        overflow: auto;
-        height: 350px;
-        /* hides scrollbar */
-        scrollbar-width: none;      /* Firefox */
-        -ms-overflow-style: none;   /* IE and Edge */
-    }
-
-    .season-list{
+    .date {
         display: flex;
         flex-direction: column;
-        gap: 15px;
-        /* border: 2px solid red; */
+        flex: 1;
+    }
+
+    .date > p:nth-last-of-type(2) {
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.4);
+        margin: 20px 0 0 0;
+    }
+
+    .date > p:nth-last-of-type(1) {
+        font-weight: 500;
+        color: var(--color-content-text);
+        margin: 5px 0 10px 0;
+    }
+
+    .stats-flex{
+        display: flex;
+    }
+
+
+}
+
+@layer seasons {
+    .season-list-container {
+        height: 350px;
         overflow: auto;
-        height: 500px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     .season-list-container::-webkit-scrollbar {
-        display: none;/* Chrome, Safari, Opera */
+        display: none;
     }
 
-    .seasons-clm{
+    .season-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        height: 500px;
+        overflow: auto;
+    }
+
+    .seasons-clm {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        padding: 0 18px;
+        width: 100%;
         border: 1px solid var(--color-border);
         border-radius: 8px;
-        width: 100%;
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 18px;
-
     }
 
-    .season-title{
-        margin: 0
-    }
-
-    .season-title{
+    .season-title {
+        margin: 0;
         font-weight: 500;
     }
+}
 
-@media (max-width: 480px) {
-        /* modal */
+@layer responsive {
+    @media (max-width: 480px) {
+        .modal-title {
+            font-size: 1.5rem;
+        }
 
-    .modal-title{
-        font-size: 1.5rem;
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px;
+        }
+
+        .flex-wrapper {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
-    
-    .modal-content{
-        display: flex;
-        flex-direction: column;
-        padding-top: 80px;
-        /* justify-content: center; */
-        /* align-items: center; */
-        /* width: 330px; */
-        /* height: 600px;; */
-    }
-
-    .flex-wrapper{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
 }
