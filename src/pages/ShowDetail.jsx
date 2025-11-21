@@ -105,20 +105,32 @@ export default function ShowDetail() {
         
                             <div className="season-list-container">
                                 <div className="season-list">
-                                        { Array.from({length: show.seasons }, (_, index) => (
-                                            <div className="seasons-clm" key={index}>
-                                                <img src={show.image} alt="{show.title} Cover Page" />
-                                                <div className="season-details">
-                                                    <p className="season-title">Season {index + 1}: Getting Started</p>
-                                                    <p>introduction to basics and foundational concepts</p>
-                                                    <div className="season-meta">
-                                                        <span>12 Episodes</span>
-                                                        <span>&#8226;</span>
-                                                        <span>Released 2024</span>
-                                                    </div>
-                                                </div>
+                                    <div className="seasons-clm">
+                                        <img src={show.image} alt="{show.title} Cover Page" />
+                                        <div className="season-details">
+                                            <p className="season-title">Season 1: Getting Started</p>
+                                            <p>introduction to basics and foundational concepts</p>
+                                            <div className="season-meta">
+                                                <span>12 Episodes</span>
+                                                <span>&#8226;</span>
+                                                <span>Released 2024</span>
                                             </div>
-                                        ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="episode-container">
+                                        <img src={show.image} alt={show.title} />
+                                        <div className="episode-details">
+                                            <p className="episode-title">Episode 1: Introduction to the Basics</p>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quasi ex </p>
+                                        
+                                            <div className="episode-meta">
+                                                <span>45 min</span>
+                                                <span>&#8226;</span>
+                                                <span>Jan 1, 2024</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
