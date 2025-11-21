@@ -18,7 +18,7 @@ export default function ShowDetail() {
 
         try{
             const data = await fetchPodcastsAPI(id, signal);
-            setPodcasts([data]); //store in podcasts in podcast state
+            setPodcasts(data); //store in podcasts in podcast state
         } catch (err) {
             if (err.name === "AbortError") return;
             setError(err.message || "Failed to fetch show.");
@@ -38,12 +38,12 @@ export default function ShowDetail() {
     if (!podcasts || podcasts.length === 0) return <LoadingState />;
 
     const show = podcasts[0]
+   
     if(!show) return <p>Show not found</p>;
-
+   
     const showGenres = getGenreTitle(show.id, genres)
-
     return (
-        <section className = {`modal ${show ? "display-modal" : ""}`}>
+        <section className = "modal">
                     <div className="modal-content">
         
                         <div className="title-btn-wrapper">
@@ -86,7 +86,7 @@ export default function ShowDetail() {
                                    
                                         { Array.from({length: show.seasons }, (_, index) => (
                                             <div className="seasons-clm" key={index}>
-                                                <p className="season-title" key={index}>Season {index + 1}</p>
+                                                <p className="season-title">Season {index + 1}</p>
                                             </div>
                                         ))}
                                 </div>

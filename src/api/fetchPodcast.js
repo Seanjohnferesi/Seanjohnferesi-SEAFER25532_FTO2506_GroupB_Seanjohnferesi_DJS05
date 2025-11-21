@@ -7,7 +7,7 @@
  * @returns {Promise<Array>} Resolves with an array of podcast objects.
  * @throws {Error} Throws if the network request fails or if the API response is invalid.
  */
-export async function fetchPodcastsAPI(signal) {
+export async function fetchPodcastsAPI(id, signal) {
     const res = await fetch("https://podcast-api.netlify.app/", { signal });
 
     if (!res.ok) {
