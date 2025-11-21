@@ -105,9 +105,6 @@ const fetchPodcasts = useCallback(async (signal) => {
 
                 <Pagination 
                     totalItems = {podcasts.length}
-                    itemsPerpage = {itemsPerpage}
-                    currentPage = {currentPage}
-                    setCurrentPage = {setCurrentPage}
                 />
 
                 {selectedPodcast && (

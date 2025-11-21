@@ -11,6 +11,7 @@ export function Podcast({children}) {
     const [selectedPodcast, setSelectedPodcast] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerpage = 6;
+    const totalItems = podcasts.length;
     const [sort, setSort] = useState("");
     const [selectedGenre , setSelectedGenre] = useState("");
     const [searchInput, setSearchInput] = useState("");
@@ -28,6 +29,7 @@ export function Podcast({children}) {
             currentPage,
             setCurrentPage,
             itemsPerpage,
+            totalItems,
             sort,
             setSort,
             selectedGenre,
