@@ -20,6 +20,7 @@ body{
     --color-content-text:rgba(0, 0, 0, 0.8);
     --color-btn: #2F719D;
     --color-backdrop: #00000054;
+    --color-fade-text : rgba(0,0,0,0.4);
 }
 
 

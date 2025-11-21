@@ -91,23 +91,32 @@ export default function ShowDetail() {
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className="stats-flex">
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
         
                         <div className="pod-season-container">
-                            <h2>Seasons</h2>
+                            <div className="title-dropdown">
+                                <h2>Current Season</h2>
+                                <select name="" >
+                                    <option value="">Season 1</option>
+                                </select>
+                            </div>
         
                             <div className="season-list-container">
                                 <div className="season-list">
-                                   
                                         { Array.from({length: show.seasons }, (_, index) => (
                                             <div className="seasons-clm" key={index}>
-                                                <p className="season-title">Season {index + 1}</p>
+                                                <img src={show.image} alt="{show.title} Cover Page" />
+                                                <div className="season-details">
+                                                    <p className="season-title">Season {index + 1}: Getting Started</p>
+                                                    <p>introduction to basics and foundational concepts</p>
+                                                    <div className="season-meta">
+                                                        <span>12 Episodes</span>
+                                                        <span>&#8226;</span>
+                                                        <span>Released 2024</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         ))}
                                 </div>
