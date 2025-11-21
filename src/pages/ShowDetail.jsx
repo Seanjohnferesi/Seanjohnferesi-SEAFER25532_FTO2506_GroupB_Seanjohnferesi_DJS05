@@ -6,7 +6,6 @@ import LoadingState from "../components/LoadingState";
 import { getGenreTitle } from "../utils/getGenreTitle.js";
 import { genres } from "../data.js";
 import { formatDate } from "../utils/formatDate.js";
-import calendar from "../assets/calendar.png"
 
 
 export default function ShowDetail() {
@@ -39,7 +38,6 @@ export default function ShowDetail() {
     if (!podcasts || podcasts.length === 0) return <LoadingState />;
 
     const show = podcasts.find(p => p.id === id)
-    console.log(show)
    
     if(!show) return <p>Show not found</p>;
    
@@ -60,7 +58,7 @@ export default function ShowDetail() {
                             </div>
         
                             <div className="pod-info-container">
-                                <div className="pod-description">
+                                <div className="pod-details">
                                     <h1 className="modal-title">{show.title}</h1>
                                     <p className="pod-info">{show.description}</p>
 
@@ -75,7 +73,7 @@ export default function ShowDetail() {
                                                 </div>
                                             </div>
 
-                                            <div className="totals-seasons">
+                                            <div className="total-seasons">
                                                 <p>TOTAL SEASONS</p>
                                                 <p>4 Seasons</p>
                                             </div>

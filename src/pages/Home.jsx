@@ -89,12 +89,7 @@ const fetchPodcasts = useCallback(async (signal) => {
 
     return (
         <main className="app-root">
-                <Header 
-                    searchInput={searchInput}
-                    setSearchInput={setSearchInput}
-                    setCurrentPage={setCurrentPage}
-                />
-
+                <Header />
                 <Filter/>
 
                 <section className="podcast-grid">
@@ -103,9 +98,7 @@ const fetchPodcasts = useCallback(async (signal) => {
                 ))}
                 </section>
 
-                <Pagination 
-                    totalItems = {podcasts.length}
-                />
+                <Pagination />
 
                 {selectedPodcast && (
                 <PodcastModal 
