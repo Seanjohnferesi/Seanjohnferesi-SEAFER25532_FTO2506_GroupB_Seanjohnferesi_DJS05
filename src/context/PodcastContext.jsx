@@ -15,6 +15,7 @@ export function Podcast({children}) {
     const [sort, setSort] = useState("");
     const [selectedGenre , setSelectedGenre] = useState("");
     const [searchInput, setSearchInput] = useState("");
+    const [seasons, setSeasons] = useState([])
 
     return (
         <PodcastContext.Provider value = {{
@@ -35,7 +36,9 @@ export function Podcast({children}) {
             selectedGenre,
             setSelectedGenre,
             searchInput,
-            setSearchInput
+            setSearchInput,
+            seasons,
+            setSeasons
         }}>
             {children}
         </PodcastContext.Provider>

@@ -37,9 +37,6 @@ export default function Home() {
         selectedGenre, setSelectedGenre,
         searchInput, setSearchInput
     } = usePodcast()
-    
-    const openModal = (podcast) => {setSelectedPodcast(podcast)};
-    const closeModal = () => { setSelectedPodcast(null) }
 
 const fetchPodcasts = useCallback(async (signal) => { 
         setLoading(true);

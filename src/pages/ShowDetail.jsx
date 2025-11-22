@@ -10,7 +10,8 @@ import { formatDate } from "../utils/formatDate.js";
 
 export default function ShowDetail() {
     const {id} = useParams();
-    const {podcasts, setPodcasts, setLoading, error, setError, loading} = usePodcast();
+    const {podcasts, setPodcasts, setLoading, error, setError, loading, seasons, setSeasons} = usePodcast();
+    const show = podcasts.find(p => p.id === id)
 
     const fetchShow = useCallback(async (signal) => {
         setLoading(true)
@@ -33,12 +34,30 @@ export default function ShowDetail() {
         return () => controller.abort();
     }, [fetchShow]);
 
+    const fetchSeasons = useCallback(async (signal) => {
+    if (!show) return; // make sure we have the show ID
+
+    try {
+        const res = await fetch(`https://podcast-api.netlify.app/id/${show.id}`, { signal });
+        const data = await res.json();
+        setSeasons(data.seasons || []); // store seasons in context
+    } catch (err) {
+        if (err.name === "AbortError") return;
+        console.error("Failed to fetch seasons:", err);
+    }
+    }, [show, setSeasons]);
+
+    useEffect(() => {
+    const controller = new AbortController();
+    fetchSeasons(controller.signal);
+    return () => controller.abort();
+    }, [fetchSeasons]);
+
+
     if (loading) return <LoadingState />
     if (error) return <p>{error}</p>
     if (!podcasts || podcasts.length === 0) return <LoadingState />;
 
-    const show = podcasts.find(p => p.id === id)
-   
     if(!show) return <p>Show not found</p>;
    
     const showGenres = getGenreTitle(show.id, genres)
