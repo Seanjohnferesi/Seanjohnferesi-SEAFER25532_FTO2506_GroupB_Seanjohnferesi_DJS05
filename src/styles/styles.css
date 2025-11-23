@@ -3,7 +3,7 @@ body{
     padding: 0;
     background-color: var(--color-bg);
     /* margin-top: 75px; */
-    padding: 75px 25px 45px 25px;
+    padding: 75px 25px 0 25px;
 }
 
 * {
