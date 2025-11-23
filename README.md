@@ -25,13 +25,6 @@ This React web app lets users browse podcasts, view detailed show information, a
 
 ---
 
-## 📸 Podcast Showcase
-
-![Podcast Show Image](https://via.placeholder.com/300x300.png?text=Podcast+Cover)  
-*The image represents the podcast cover displayed in the show detail page.*
-
----
-
 ## 🛠️ Technologies Used
 
 - React  
@@ -42,9 +35,19 @@ This React web app lets users browse podcasts, view detailed show information, a
 
 ---
 
-## ⚙️ Setup
+## 📸 Podcast Showcase
 
-1. Clone the repository:
+![Podcast Show Image](./src/assets/desktop-view.png)  
+*The image represents the podcast cover displayed in the show detail page.*
 
-```bash
-git clone https://github.com/yourusername/podcast-show-detail.git
+---
+
+## 🚀 How to Use
+
+- Open the homepage to browse available podcasts.
+ 
+- Click on a podcast to view its detailed page with seasons and episodes.
+
+- Expand or switch between seasons to explore episodes.
+
+- Click the *back button* to return to the homepage while keeping previous  filters and search results intact.
