@@ -1,5 +1,4 @@
 
-
 .card {
     width: 100%;
     border: 1px solid var(--color-border);
@@ -34,11 +33,12 @@
     font-weight: 500;
     font-size: 1.2rem;
 
-    display: -webkit-box;          
-    -webkit-line-clamp: 1;         
+    display: -webkit-box;
+    /* remove line */
     -webkit-box-orient: vertical;  
     overflow: hidden;              
     text-overflow: ellipsis;
+    -webkit-line-clamp: 1;         
     transition: transform .5s ease;
 }
 

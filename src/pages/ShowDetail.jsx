@@ -7,6 +7,13 @@ import { getGenreTitle } from "../utils/getGenreTitle.js";
 import { genres } from "../data.js";
 import { formatDate } from "../utils/formatDate.js";
 
+/**
+ * ShowDetail component displays detailed information about a specific podcast show,
+ * including its description, genres, seasons, and episodes.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered show detail page
+ */
 export default function ShowDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -31,7 +38,11 @@ export default function ShowDetail() {
         month: "long", day: "numeric", year: "numeric"
     }) : "";
 
-    // Fetch main show data
+    /**
+     * Fetch main show data from the API.
+     *
+     * @param {AbortSignal} signal - Signal to cancel fetch request if needed
+     */
     const fetchShow = useCallback(async (signal) => {
         setLoading(true);
         setError(null);
@@ -53,7 +64,11 @@ export default function ShowDetail() {
         return () => controller.abort();
     }, [fetchShow]);
 
-    // Fetch seasons
+    /**
+     * Fetch all seasons for the current show from the API.
+     *
+     * @param {AbortSignal} signal - Signal to cancel fetch request if needed
+     */
     const fetchSeasons = useCallback(async (signal) => {
         if (!show) return;
 
@@ -83,7 +98,7 @@ export default function ShowDetail() {
             {/* Back Button */}
             <div className="back-btn" onClick={() => navigate("/")}>
                 <span>&#10139;</span>
-                <span>back</span>
+                <span>Back</span>
             </div>
 
             <section className="modal">
@@ -121,6 +136,7 @@ export default function ShowDetail() {
                                             <p>{seasons.length} Seasons</p>
                                         </div>
                                         </div>
+
                                         {/* Episodes and last updated */}
                                         <div className="date">
                                             <div className="date-details">
