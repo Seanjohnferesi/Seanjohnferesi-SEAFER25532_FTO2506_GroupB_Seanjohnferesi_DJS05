@@ -6,7 +6,7 @@ import LoadingState from "../components/LoadingState";
 import { getGenreTitle } from "../utils/getGenreTitle.js";
 import { genres } from "../data.js";
 import { formatDate } from "../utils/formatDate.js";
-
+import { useNavigate } from "react-router-dom";
 
 export default function ShowDetail() {
     const { id } = useParams();
@@ -27,20 +27,21 @@ export default function ShowDetail() {
 
     const show = podcasts.find(p => p.id === id);
 
+    // Fetch main show
     const fetchShow = useCallback(async (signal) => {
-        setLoading(true)
-        setError(null)
+        setLoading(true);
+        setError(null);
 
-        try{
+        try {
             const data = await fetchPodcastsAPI(id, signal);
-            setPodcasts(data); //store in podcasts in podcast state
+            setPodcasts(data);
         } catch (err) {
             if (err.name === "AbortError") return;
             setError(err.message || "Failed to fetch show.");
         } finally {
             setLoading(false);
         }
-    }, [id])
+    }, [id]);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -72,10 +73,11 @@ export default function ShowDetail() {
     if (loading) return <LoadingState />;
     if (error) return <p>{error}</p>;
     if (!podcasts || podcasts.length === 0) return <LoadingState />;
+    if (!show) return <p>Show not found</p>;
 
-    if(!show) return <p>Show not found</p>;
-   
-    const showGenres = getGenreTitle(show.id, genres)
+    const currentSeason = seasons[Number(selectedSeason)];
+    const showGenres = getGenreTitle(show.id, genres);
+
     return (
         <>
             <div 
