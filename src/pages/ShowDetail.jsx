@@ -34,28 +34,29 @@ export default function ShowDetail() {
         return () => controller.abort();
     }, [fetchShow]);
 
+    // Fetch seasons
     const fetchSeasons = useCallback(async (signal) => {
-    if (!show) return; // make sure we have the show ID
+        if (!show) return;
 
-    try {
-        const res = await fetch(`https://podcast-api.netlify.app/id/${show.id}`, { signal });
-        const data = await res.json();
-        setSeasons(data.seasons || []); // store seasons in context
-    } catch (err) {
-        if (err.name === "AbortError") return;
-        console.error("Failed to fetch seasons:", err);
-    }
+        try {
+            const res = await fetch(`https://podcast-api.netlify.app/id/${show.id}`, { signal });
+            const data = await res.json();
+            setSeasons(data.seasons || []);
+        } catch (err) {
+            if (err.name === "AbortError") return;
+            console.error("Failed to fetch seasons:", err);
+        }
     }, [show, setSeasons]);
-
+        
     useEffect(() => {
-    const controller = new AbortController();
-    fetchSeasons(controller.signal);
-    return () => controller.abort();
+        const controller = new AbortController();
+        fetchSeasons(controller.signal);
+        return () => controller.abort();
     }, [fetchSeasons]);
 
-
-    if (loading) return <LoadingState />
-    if (error) return <p>{error}</p>
+    // Loading + error states
+    if (loading) return <LoadingState />;
+    if (error) return <p>{error}</p>;
     if (!podcasts || podcasts.length === 0) return <LoadingState />;
 
     if(!show) return <p>Show not found</p>;
