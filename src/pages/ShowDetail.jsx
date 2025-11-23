@@ -171,26 +171,44 @@ export default function ShowDetail() {
                                 </div>
                             )}
 
-                                    <div className="episode-container">
-                                        <img src={show.image} alt={show.title} />
-                                        <div className="episode-details">
-                                            <p className="episode-title">Episode 1: Introduction to the Basics</p>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quasi ex </p>
-                                        
-                                            <div className="episode-meta">
-                                                <span>45 min</span>
-                                                <span>&#8226;</span>
-                                                <span>Jan 1, 2024</span>
-                                            </div>
+
+                            <div className="season-list">
+
+                                
+                                
+                                {currentSeason?.episodes.map((ep,index) => (
+
+                                
+                                <div className="episode-container" key={index}>
+                                    <img src={currentSeason.image} alt={ep.title} />
+
+                                    <div className="episode-details">
+                                        <p className="episode-title">
+                                            Episode {index + 1}: {ep.title}
+                                        </p>
+
+                                        <p className="episode-desc">{ep.description}</p>
+
+                                        <div className="episode-meta">
+                                            <span>45 min</span>
+                                            <span>&#8226;</span>
+                                            <span>{new Date(show.updated)
+                                                    .toLocaleDateString("en-Us", {
+                                                        month : "long",
+                                                        day : "numeric",
+                                                        year : "numeric"
+                                                    }
+                                                )}</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div>))}
+
                             </div>
                         </div>
-
-                        
-            
                     </div>
-                </section>
-    )
+
+                </div>
+            </section>
+        </>
+    );
 }
