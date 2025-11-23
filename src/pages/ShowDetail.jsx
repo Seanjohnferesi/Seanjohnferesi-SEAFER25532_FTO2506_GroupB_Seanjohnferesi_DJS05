@@ -9,9 +9,23 @@ import { formatDate } from "../utils/formatDate.js";
 
 
 export default function ShowDetail() {
-    const {id} = useParams();
-    const {podcasts, setPodcasts, setLoading, error, setError, loading, seasons, setSeasons} = usePodcast();
-    const show = podcasts.find(p => p.id === id)
+    const { id } = useParams();
+    const navigate = useNavigate()
+
+    const {
+        podcasts,
+        setPodcasts,
+        setLoading,
+        error,
+        setError,
+        loading,
+        seasons,
+        setSeasons,
+        selectedSeason,
+        setSelectedSeason
+    } = usePodcast();
+
+    const show = podcasts.find(p => p.id === id);
 
     const fetchShow = useCallback(async (signal) => {
         setLoading(true)
