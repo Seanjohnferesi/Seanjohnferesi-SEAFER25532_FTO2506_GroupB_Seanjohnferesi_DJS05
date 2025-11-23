@@ -77,52 +77,57 @@ export default function ShowDetail() {
    
     const showGenres = getGenreTitle(show.id, genres)
     return (
-        <section className = "modal">
-                    <div className="modal-content">
-        
-                        <div className="title-btn-wrapper">
-                            <div className="close-btn" >
-                            </div>
+        <>
+            <div 
+                className="back-btn"
+                onClick={() => navigate("/")}
+            >
+                <span>&#10139;</span>
+                <span>back</span>
+            </div>
+            <section className="modal">
+                
+                <div className="modal-content">
+                    <div className="title-btn-wrapper">
+                        <div className="close-btn"></div>
+                    </div>
+
+                    <div className="flex-wrapper">
+                        <div className="pod-img">
+                            <img src={show.image} alt={show.title} />
                         </div>
-        
-                        <div className="flex-wrapper">
-                        
-                            <div className="pod-img">
-                                <img src={show.image} alt={show.title} />
-                            </div>
-        
-                            <div className="pod-info-container">
-                                <div className="pod-details">
-                                    <h1 className="modal-title">{show.title}</h1>
-                                    <p className="pod-info">{show.description}</p>
 
-                                    <div className="genre-date">
-                                        <div className="genre-container">
-                                            <div className="rt">
-                                                <p className="gen-header">GENRES</p>
-                                                <div className="genre-flex">
-                                                    {showGenres.map((genre, index) => (
-                                                        <div key={index} className="genre-item">{genre}</div>
-                                                    )) }
-                                                </div>
-                                            </div>
+                        <div className="pod-info-container">
+                            <div className="pod-details">
+                                <h1 className="modal-title">{show.title}</h1>
+                                <p className="pod-info">{show.description}</p>
 
-                                            <div className="total-seasons">
-                                                <p>TOTAL SEASONS</p>
-                                                <p>4 Seasons</p>
+                                <div className="genre-date">
+                                    <div className="genre-container">
+                                        <div className="rt">
+                                            <p className="gen-header">GENRES</p>
+                                            <div className="genre-flex">
+                                                {showGenres.map((genre, index) => (
+                                                    <div key={index} className="genre-item">{genre}</div>
+                                                ))}
                                             </div>
                                         </div>
 
-                                        <div className="date">
-                                            <div className="date-details">
-                                                <p>LAST UPDATED</p>
-                                                <p className="date-formatted">{formatDate(show.updated )} </p>
-                                            </div>
+                                        <div className="total-seasons">
+                                            <p>TOTAL SEASONS</p>
+                                            <p>{seasons.length} Seasons</p>
+                                        </div>
+                                    </div>
 
-                                            <div className="total-episodes">
-                                                <p>TOTAL EPISODES</p>
-                                                <p>48 Episodes</p>
-                                            </div>
+                                    <div className="date">
+                                        <div className="date-details">
+                                            <p>LAST UPDATED</p>
+                                            <p className="date-formatted">{formatDate(show.updated)}</p>
+                                        </div>
+
+                                        <div className="total-episodes">
+                                            <p>TOTAL EPISODES</p>
+                                            <p>{seasons.reduce((total, s) => total + (s.episodes?.length || 0),0)} Episodes</p>
                                         </div>
                                     </div>
                                 </div>
