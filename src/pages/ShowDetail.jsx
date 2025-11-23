@@ -133,29 +133,43 @@ export default function ShowDetail() {
                                 </div>
                             </div>
                         </div>
-        
-                        <div className="pod-season-container">
-                            <div className="title-dropdown">
-                                <h2>Current Season</h2>
-                                <select name="" >
-                                    <option value="">Season 1</option>
-                                </select>
-                            </div>
-        
-                            <div className="season-list-container">
-                                <div className="season-list">
-                                    <div className="seasons-clm">
-                                        <img src={show.image} alt="{show.title} Cover Page" />
-                                        <div className="season-details">
-                                            <p className="season-title">Season 1: Getting Started</p>
-                                            <p>introduction to basics and foundational concepts</p>
-                                            <div className="season-meta">
-                                                <span>12 Episodes</span>
-                                                <span>&#8226;</span>
-                                                <span>Released 2024</span>
-                                            </div>
+                    </div>
+
+                    {/* Seasons Info */}
+                    <div className="pod-season-container">
+                        <div className="title-dropdown">
+                            <h2>Current Season</h2>
+
+                            <select onChange={(s) => setSelectedSeason(Number(s.target.value))}>
+                                {seasons.map((s, index) => (
+                                    <option key={index} value={index}>
+                                        Season {index + 1}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="season-list-container">
+                            {currentSeason && (
+                                <div className="seasons-clm">
+                                    <img src={show.image} alt={`${show.title} Cover Page`} />
+                                    <div className="season-details">
+                                        <p className="season-title">
+                                            Season {selectedSeason + 1}: {currentSeason.title}
+                                        </p>
+                                        <p>introduction to basics and foundational concepts</p>
+                                        <div className="season-meta">
+                                            <span>{currentSeason?.episodes.length} Episodes</span>
+                                            <span>&#8226;</span>
+                                            <span>Released {new Date(show.updated)
+                                                .toLocaleDateString("en-Us", {
+                                                    year : "numeric"
+                                                }
+                                            )}</span>
                                         </div>
                                     </div>
+                                </div>
+                            )}
 
                                     <div className="episode-container">
                                         <img src={show.image} alt={show.title} />
