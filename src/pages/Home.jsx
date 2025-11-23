@@ -6,10 +6,6 @@ import { usePodcast } from "../context/PodcastContext.jsx";
 
 // API / Utils
 import { fetchPodcastsAPI } from "../api/fetchPodcast.js";
-import { getGenreTitle } from "../utils/getGenreTitle.js";
-import { filterPodcasts } from "../utils/filterPodcasts.js";
-import { sortPodcasts } from "../utils/sortPodcast.js";
-import { searchPodcast } from "../utils/search.js";
 import { paginatePodcasts } from "../utils/pagination.js";
 
 // Components
@@ -33,9 +29,7 @@ export default function Home() {
         selectedPodcast, setSelectedPodcast,
         currentPage, setCurrentPage,
         itemsPerpage,
-        sort, setSort,
-        selectedGenre, setSelectedGenre,
-        searchInput, setSearchInput
+        searchFiltered,
     } = usePodcast()
 
 const fetchPodcasts = useCallback(async (signal) => { 
@@ -71,14 +65,6 @@ const fetchPodcasts = useCallback(async (signal) => {
 
     if(loading) return <LoadingState/>
 
-    // GENRE FILTER
-    const filtered = filterPodcasts(podcasts, selectedGenre, genres, getGenreTitle)
-    
-    // SORTING
-    const sortedItems = sortPodcasts(filtered, sort)
-
-    // SEARCH
-    const searchFiltered = searchPodcast(sortedItems, searchInput)
 
     // PAGINATION
     const currentPodcast = paginatePodcasts(searchFiltered, currentPage, itemsPerpage)
@@ -91,7 +77,7 @@ const fetchPodcasts = useCallback(async (signal) => {
 
                 <section className="podcast-grid">
                 {currentPodcast.map((podcast) => (
-                    <PodcastCard key={podcast.id} podcast={podcast} openModal={openModal} />
+                    <PodcastCard key={podcast.id} podcast={podcast} />
                 ))}
                 </section>
 
@@ -100,7 +86,6 @@ const fetchPodcasts = useCallback(async (signal) => {
                 {selectedPodcast && (
                 <PodcastModal 
                     podcast={selectedPodcast} 
-                    closeModal={() => setSelectedPodcast(null)} 
                 />
             )}
         </main>
