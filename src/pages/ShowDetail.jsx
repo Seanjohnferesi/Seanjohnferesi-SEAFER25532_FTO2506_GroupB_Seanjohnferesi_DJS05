@@ -120,7 +120,7 @@ export default function ShowDetail() {
                                             <p>TOTAL SEASONS</p>
                                             <p>{seasons.length} Seasons</p>
                                         </div>
-
+                                        </div>
                                         {/* Episodes and last updated */}
                                         <div className="date">
                                             <div className="date-details">
@@ -132,7 +132,7 @@ export default function ShowDetail() {
                                                 <p>{seasons.reduce((total, s) => total + (s.episodes?.length || 0),0)} Episodes</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

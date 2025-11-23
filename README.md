@@ -1,16 +1,50 @@
-# React + Vite
+# 🎙️ Podcast Show Detail App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based web app that lets users browse podcasts, view detailed show information, and explore seasons and episodes.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📝 Overview
 
-## React Compiler
+This React web app lets users browse podcasts, view detailed show information, and explore seasons and episodes with ease.  
+ 
+- Dynamic routing for individual show pages.  
+- Displays podcast details including title, image, and genres.  
+- Shows all seasons and episodes.  
+- Maintains user’s filter and search state when returning to the homepage.  
+- Graceful handling of loading, error, and empty states.  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Browse all podcasts on the homepage with filters, sorting, search, and pagination.  
+- Click on a podcast to view a detailed page with seasons and episodes.  
+- Expand or switch between seasons to explore episodes.  
+- Back button to return to the homepage while preserving previous filters and search results.  
+
+---
+
+## 📸 Podcast Showcase
+
+![Podcast Show Image](https://via.placeholder.com/300x300.png?text=Podcast+Cover)  
+*The image represents the podcast cover displayed in the show detail page.*
+
+---
+
+## 🛠️ Technologies Used
+
+- React  
+- React Router  
+- Context API  
+- JavaScript (ES6+)  
+- CSS  
+
+---
+
+## ⚙️ Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/podcast-show-detail.git
